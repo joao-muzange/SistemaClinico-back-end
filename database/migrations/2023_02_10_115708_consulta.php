@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('diagnostico');
 
 
-            $table->foreign('horario_marcacao_id')->references('id')->on('horario_marcacao');            
+            $table->foreign('horario_marcacao_id')->references('id')->on('horario_marcacoes');            
             $table->timestamps();
         });
     }
