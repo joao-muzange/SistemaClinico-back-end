@@ -17,4 +17,7 @@ class Especialidade extends Model
     protected $keyType = 'string';
     public $timestamps = true;
 
+    protected $fillable = [
+        'nome', 'descricao'
+    ];
 }

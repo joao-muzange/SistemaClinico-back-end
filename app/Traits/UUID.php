@@ -15,9 +15,9 @@ trait UUID
          * Listen for the creating event on the user model.
          * Sets the 'id' to a UUID using Str::uuid() on the instance being created
          */
-        static::creating(function (＄model) {
-            if (＄model->getKey() === null) {
-                ＄model->setAttribute(＄model->getKeyName(), Str::uuid()->toString());
+        static::creating(function ($model) {
+            if ($model->getKey() === null) {
+                $model->setAttribute($model->getKeyName(), Str::uuid()->toString());
             }
         });
     }
