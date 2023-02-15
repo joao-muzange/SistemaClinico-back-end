@@ -11,17 +11,17 @@ return new class extends Migration
         Schema::create('pessoas', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nome');
-            $table->string('filiacao');
+            $table->string('filiacao')->nullable();
             $table->string('numero_bi')->unique();
-            $table->string('residencia');
-            $table->string('naturalidade');
-            $table->string('provincia');
-            $table->date('emissao_bi');
-            $table->float('altura', 2);
-            $table->date('validade_bi');
+            $table->string('residencia')->nullable();
+            $table->string('naturalidade')->nullable();
+            $table->string('provincia')->nullable();
+            $table->date('emissao_bi')->nullable();
+            $table->float('altura', 2)->nullable();
+            $table->date('validade_bi')->nullable();
             $table->enum('sexo',['M','F']);
-            $table->enum('estado_civil',['casado(a)','solteiro(a)','divorciado(a)','viuvo(a)']);
-            $table->date('data_nascimento');
+            $table->enum('estado_civil',['casado(a)','solteiro(a)','divorciado(a)','viuvo(a)'])->nullable();
+            $table->date('data_nascimento')->nullable();
             
             $table->timestamps();
         });

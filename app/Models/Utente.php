@@ -17,4 +17,7 @@ class Utente extends Model
     protected $keyType = 'string';
     public $timestamps = true;
 
+    public function Pessoa (){
+        return $this->belongsTo(Pessoa::class,'pessoa_id');
+    }
 }

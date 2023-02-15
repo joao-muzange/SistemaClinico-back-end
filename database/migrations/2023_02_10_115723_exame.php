@@ -14,7 +14,7 @@ return new class extends Migration
             $table->uuid('pessoal_clinico_id');
             $table->enum('estado',['Concluida','Cancelada']);
             $table->dateTime('data');
-            $table->text('resultado');
+            $table->text('resultado')->nullable();
             $table->dateTime('data_resultado')->nullable();
 
 

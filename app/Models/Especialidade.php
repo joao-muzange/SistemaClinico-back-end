@@ -20,4 +20,4 @@ class Especialidade extends Model
     protected $fillable = [
         'nome', 'descricao'
     ];
-}
+ }

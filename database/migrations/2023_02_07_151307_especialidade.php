@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('especialidades', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nome');
-            $table->text('descricao');
+            $table->text('descricao')->nullable();
            
             
             $table->timestamps();

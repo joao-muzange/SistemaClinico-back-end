@@ -17,7 +17,7 @@ class Pessoa extends Model
     protected $keyType = 'string';
     public $timestamps = true;
     
-    //protected $attributes = [
-       // ''
-    //];
+    public function Utente (){
+        return $this->hasOne(Utente::class,'pessoa_id') ;
+    }
 }
