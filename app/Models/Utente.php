@@ -17,7 +17,23 @@ class Utente extends Model
     protected $keyType = 'string';
     public $timestamps = true;
 
-    public function Pessoa (){
-        return $this->belongsTo(Pessoa::class,'pessoa_id');
+    protected $fillable = [
+        'utilizador_id',
+        'filiacao',
+        'numero_bi',
+        'residencia',
+        'naturalidade',
+        'provincia',
+        'emissao_bi',
+        'altura',
+        'validade_bi',
+        'sexo',
+        'estado_civil',
+        'data_nascimento',
+    ];
+
+    public function utilizador()
+    {
+        return $this->belongsTo(Utilizador::class, 'utilizador_id');
     }
 }

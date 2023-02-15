@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pessoa;
 use App\Models\Utente;
+use App\Models\Utilizador;
 use Illuminate\Http\Request;
 
 class UtenteController extends Controller
@@ -19,13 +21,25 @@ class UtenteController extends Controller
 
     public function create(Request $request)
     {
+
         $request->validate([
-            'nome' => 'required'
+            'nome' => 'required',
+            'telefone' => 'required',
         ]);
 
-        $especialidade = Utente::create($request->all());
+        $isEmptyPassword =  $request->password ?? true;
+        if ($isEmptyPassword === true) {
+            $request['password'] = '123';
+        }
 
-        return $especialidade;
+        $request['tipo'] = 'Utente';
+        $utilizador = Utilizador::create($request->all());
+
+        if (!$utilizador) return response('Erro ao criar utente', 400);
+
+        $utente = $utilizador->utente()->create($request->all());
+
+        return $utente;
     }
 
     public function update(Request $request, $id)
@@ -34,11 +48,11 @@ class UtenteController extends Controller
             'nome' => 'required'
         ]);
 
-        $especialidade = Utente::findOrFail($id);
+        $utente = Utente::findOrFail($id);
 
-        $especialidade->update($request->all());
+        $utente->update($request->all());
 
-        return $especialidade;
+        return $utente;
     }
 
     public function delete($id)

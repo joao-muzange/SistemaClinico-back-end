@@ -14,18 +14,25 @@ class Utilizador extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     use UUID;
 
-   
+    protected $table = 'utilizadores';
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    public $timestamps = true;
+
     protected $fillable = [
         'nome',
         'telefone',
         'password',
+        'tipo',
     ];
 
-   
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
     
+    public function utente (){
+        return $this->hasOne(Utente::class,'utilizador_id') ;
+    }
 }
